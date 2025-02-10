@@ -1,0 +1,63 @@
+> tsc
+
+client/src/pages/products.tsx:338:34 - error TS2339: Property 'lowPrice' does not exist on type 'GeneratedProduct'.
+
+338         lowPrice: Number(product.lowPrice || 0),
+                                     ~~~~~~~~
+
+client/src/pages/products.tsx:339:35 - error TS2339: Property 'highPrice' does not exist on type 'GeneratedProduct'.
+
+339         highPrice: Number(product.highPrice || 0),
+                                      ~~~~~~~~~
+
+client/src/pages/products.tsx:776:35 - error TS2339: Property 'length' does not exist on type '{}'.
+
+776             {products && products.length > 0 ? (
+                                      ~~~~~~
+
+client/src/pages/products.tsx:778:27 - error TS2339: Property 'map' does not exist on type '{}'.
+
+778                 {products.map((product: any) => (
+                              ~~~
+
+client/src/pages/run-survey.tsx:132:28 - error TS2571: Object is of type 'unknown'.
+
+132           preferenceShare: Object.values(product.responses).reduce((a: number, b: number) => a + b, 0) / data.totalResponses
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+client/src/pages/run-survey.tsx:132:68 - error TS2769: No overload matches this call.
+  Overload 1 of 3, '(callbackfn: (previousValue: unknown, currentValue: unknown, currentIndex: number, array: unknown[]) => unknown, initialValue: unknown): unknown', gave the following error.
+    Argument of type '(a: number, b: number) => number' is not assignable to parameter of type '(previousValue: unknown, currentValue: unknown, currentIndex: number, array: unknown[]) => unknown'.
+      Types of parameters 'a' and 'previousValue' are incompatible.
+        Type 'unknown' is not assignable to type 'number'.
+  Overload 2 of 3, '(callbackfn: (previousValue: number, currentValue: unknown, currentIndex: number, array: unknown[]) => number, initialValue: number): number', gave the following error.
+    Argument of type '(a: number, b: number) => number' is not assignable to parameter of type '(previousValue: number, currentValue: unknown, currentIndex: number, array: unknown[]) => number'.
+      Types of parameters 'b' and 'currentValue' are incompatible.
+        Type 'unknown' is not assignable to type 'number'.
+
+132           preferenceShare: Object.values(product.responses).reduce((a: number, b: number) => a + b, 0) / data.totalResponses
+                                                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+server/routes/synthetic-consumer.ts:55:53 - error TS18046: 'error' is of type 'unknown'.
+
+55     res.status(500).send(`Error creating persona: ${error.message}`);
+                                                       ~~~~~
+
+server/routes/synthetic-consumer.ts:278:34 - error TS2339: Property 'includes' does not exist on type '{}'.
+
+278           if (!question.options?.includes(answer as string)) {
+                                     ~~~~~~~~
+
+server/routes/synthetic-consumer.ts:283:80 - error TS2339: Property 'includes' does not exist on type '{}'.
+
+283           if (!Array.isArray(answer) || !answer.every(opt => question.options?.includes(opt))) {
+                                                                                   ~~~~~~~~
+
+
+Found 9 errors in 3 files.
+
+Errors  Files
+     4  client/src/pages/products.tsx:338
+     2  client/src/pages/run-survey.tsx:132
+     3  server/routes/synthetic-consumer.ts:55
